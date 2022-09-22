@@ -15,4 +15,4 @@ Sure, my (tim's) coding skills are crappy but enthusistic, more skilled contribu
 ## Whats next?
 
 - adapt the model and view definitions in HTML to represent a 2 x 2 grid. 
-![2 x 2 grid](/img/views.png)
+![2 x 2 grid](/img/views.JPG)
