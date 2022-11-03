@@ -1,0 +1,253 @@
+<html>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<head>
+		<link rel='stylesheet' href='..\main.css'></link>
+		<script src='..\main.js'></script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js'></script>
+	</head>
+	<body onload="main()">
+	
+	<div class="container-">
+		<plan->
+			<div id="plan-core">
+				<div id="core"></div>
+			</div>
+		</plan->
+		<props->
+			<div style="overflow-x: auto;">
+				<table>
+					<tr>
+						<td>Length of the building:
+						<input 
+							type="number"
+							style="width:60px" 
+							name="LengthBuilding" 
+							id="LengthBuilding">
+						<input
+							type ="button"
+							value="Submit"
+							onclick="LengthBuilding()">
+							</button>
+						</td>
+						<td>Width of the building:
+						<input 
+							type="number" 
+							style="width:60px" 
+							name="WidthBuilding" 
+							id="WidthBuilding">
+						<input 
+							type ="button"
+							value="Submit"
+							onclick="WidthBuilding()">
+							</button>
+						</td>
+					</tr>
+					<tr>
+						<td>Thickness of the wall:
+						<input 
+							type="number" 
+							style="width:60px"
+							name="Thicknessofthewall" 
+							id="Thicknessofthewall">
+						<input 
+							type ="button" 
+							value="Submit"
+							onclick="Thicknessofthewall()">
+							</button>
+						</td>
+						<td>Length of the core:
+						<input 
+							type="number"
+							style="width:60px" 
+							name="Lengthofthecore"
+							id="Lengthofthecore">
+						<input 
+							type ="button"
+							value="Submit" 
+							onclick="Lengthofthecore()">
+							</button>
+						</td>
+					</tr>
+					<tr>
+						<td>Width of the core:
+						<input 
+							type="number" 
+							style="width:60px"
+							name="Widthofthecore" 
+							id="Widthofthecore">
+						<input 
+							type ="button" 
+							value="Submit" 
+							onclick="Widthofthecore()">
+							</button>
+						</td>
+						<td>X Location of the core:
+						<input 
+							type="number" 
+							style="width:60px" 
+							name="XLocationofthecore" 
+							id="XLocationofthecore">
+						<input 
+							type ="button"
+							value="Submit"
+							onclick="XLocationofthecore()">
+							</button>
+						</td>
+					</tr>
+					<tr>
+						<td>Y Location of the core:
+						<input 
+							type="number"
+							style="width:60px"
+							name="YLocationofthecore"
+							id="YLocationofthecore">
+						<input 
+							type ="button"
+							value="Submit"
+							onclick="YLocationofthecore()">
+							</button>
+						</td>				
+						<td>Height of the floor:
+						<input 
+							type="number"
+							style="width:60px"
+							name="Heightofthefloor"
+							id="Heightofthefloor">
+						<input 
+							type ="button" 
+							value="Submit" 
+							onclick="Heightofthefloor()">
+							</button>
+						</td>
+					</tr>
+					<tr>
+						<form id="new-floor-form">
+							Number of floors:
+							<input 
+								type="number"
+								id="new-floor-input"/>
+							<input
+								id="new-floor-submit"
+								type ="submit"
+								value="Add floor"/>
+						</form>
+						<td>Total height of the building:
+						<input 
+							type="number"
+							style="width:60px"
+							name="totalheightofthebuilding"
+							id="totalheightofthebuilding">
+						<input
+							type ="button" 
+							value="Submit"
+							onclick="totalheightofthebuilding()">
+							</button>
+						</td>
+					</tr>
+				</table>
+			</div>	
+		</props->	
+		<section->
+			<project- name="Duplex Apartment">
+				<site- lat="(41, 52, 27, 840000)" long="(-87, -38, -21, -839999)" elev="-0.0">
+					<building->
+						<roof- 
+							class="floor_roof"
+							name='Roof'  
+							level='9' 
+							elev="27.000000000000" >
+							Roof<span 
+							class="floor_stats">
+							27.0</span>
+						</roof->
+						<div id="floor-middle"></div>
+						<!--<div id="floor" name="floor" ><span class="floor_stats">trial</span></div>-->
+						<floor- 
+							class="floor_upper" 
+							name='Level 8'  
+							level='7' 
+							elev="21.100000000000378" >
+							Level 8<span 
+							class="floor_stats">
+							21.1</span> 
+						</floor->
+						<!--<core-></core->
+						</floor->
+						<floor- class="floor_ground" name='Level 1'  level='0' elev="0.0" >Level 1<span class="floor_stats">0.0</span> </floor->
+						<ground-></ground->
+						<core-></core->-->
+						<underground- 
+							class="underground_lower" 
+							name='T/FDN'  
+							level='-1' 
+							elev="-1.25" >
+							T/FDN<span 
+							class="underground_stats">
+							-1.25</span> 
+						</underground->
+					</building->
+				</site->
+			</project->
+		</section->
+		<result->
+			<myPlot- id="myPlot" name="Wind load simulation" type="text/javascript"></myPlot->
+			
+				
+			<Eurocodecheck- id="Eurocodecheck-" name="Eurocode check" type="text/javascript" ></Eurocodecheck->
+
+			
+<script type="text/javascript">
+
+qp = [];
+y = [];
+
+
+
+
+	for ( var i=1;i<200; i++) {
+
+		Vb = 24;
+		c0z= 1;
+		z0III = 0.3;	
+		kr = 0.19 * (z0III / 0.05) ** 0.07;	
+		crz = kr * Math.log(i / z0III);
+		Vm = crz * Vb * c0z;
+		kl = 1;	
+		Iv = kl / (c0z * Math.log(i / z0III));
+		rho = 1.25;
+		qp[i] = ((1 + 7 * Iv) * 0.5 * rho * Vm ** 2)/1000;	
+		y[i] = i;
+		
+}
+var xArray = qp;
+var yArray = y;
+var data = [{
+	x: xArray,
+	y: yArray,
+	type: 'line',
+  
+}];
+
+var layout = {
+	xaxis: {range: [0, 2]}, //title: "peak velocity pressure"},
+	yaxis: {range: [0, 200]}, //title: "Height of the building",
+	//title: "peak velocity vs. Height of the building"
+	  margin: {
+    l: 50,
+    r: 10,
+    b: 60,
+    t: 20,
+    pad: 8
+  },
+};
+
+Plotly.newPlot('myPlot', data, layout);
+
+
+</script>			
+
+		</result->
+					
+	</div>	
+	</body>
+</html>
