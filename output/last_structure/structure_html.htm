@@ -1,0 +1,323 @@
+<html>
+
+<head>
+<!--inside the head are located all the links which will be used inside the script, such as, CSS script and JS script-->
+	<link rel='stylesheet' href='main.css'></link>
+	<script src='main.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js'></script>
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<!--The body starts loading the first function of the JS script called main()-->
+	<body onload="main()">
+<!--the first div is used in order to divide the screen in four different containers: plan, props, section and results-->	
+	<div class="container-">
+<!--The first box, plan, has inside a js script which is used to get information about the floor and display this information inside the plan.
+	It has also another JS script which helps to modify the width and the height of the plan-->
+		<plan->
+			<div id="plan-core">
+				<div id="core"></div>
+			</div>
+		</plan->
+<!--The props box, is divided in two different areas. The first area is a JS script which shares important information about the project and a form is created to modify the section view adding and deleting floors.-->
+		<props->
+			<div style="overflow-x: auto;">
+				<form id="new-floor-form">
+					Number of floors:
+					<input type="number"
+						   id="new-floor-input" />
+					<input id="new-floor-submit"
+						   type="submit"
+						   value="Add floor" />
+				</form>
+				<!--In the second area is located a table where it is possible to modify important information about the design-->
+				<table>
+					<tr>
+						<td>
+							Length of the building:
+							<input type="number"
+								   style="width:60px"
+								   name="LengthBuilding"
+								   id="LengthBuilding">
+							<input type="button"
+								   value="Submit"
+								   onclick="LengthBuilding()">
+							</>
+						</td>
+						<td>
+							Width of the building:
+							<input type="number"
+								   style="width:60px"
+								   name="WidthBuilding"
+								   id="WidthBuilding">
+							<input type="button"
+								   value="Submit"
+								   onclick="WidthBuilding()">
+							</>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Thickness of the wall:
+							<input type="number"
+								   style="width:60px"
+								   name="Thicknessofthewall"
+								   id="Thicknessofthewall">
+							<input type="button"
+								   value="Submit"
+								   onclick="Thicknessofthewall()">
+							</>
+						</td>
+						<td>
+							Length of the core:
+							<input type="number"
+								   style="width:60px"
+								   name="Lengthofthecore"
+								   id="Lengthofthecore">
+							<input type="button"
+								   value="Submit"
+								   onclick="Lengthofthecore()">
+							</>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Width of the core:
+							<input type="number"
+								   style="width:60px"
+								   name="Widthofthecore"
+								   id="Widthofthecore">
+							<input type="button"
+								   value="Submit"
+								   onclick="Widthofthecore()">
+							</>
+						</td>
+						<td>
+							X Location of the core:
+							<input type="number"
+								   style="width:60px"
+								   name="XLocationofthecore"
+								   id="XLocationofthecore">
+							<input type="button"
+								   value="Submit"
+								   onclick="XLocationofthecore()">
+							</>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Y Location of the core:
+							<input type="number"
+								   style="width:60px"
+								   name="YLocationofthecore"
+								   id="YLocationofthecore">
+							<input type="button"
+								   value="Submit"
+								   onclick="YLocationofthecore()">
+							</>
+						</td>
+						<td>
+							Height of the floor:
+							<input type="number"
+								   style="width:60px"
+								   name="Heightofthefloor"
+								   id="Heightofthefloor">
+							<input type="button"
+								   value="Submit"
+								   onclick="Heightofthefloor()">
+							</>
+						</td>
+					</tr>
+
+					<tr>
+
+						<td>
+							Total height of the building:
+							<input type="number" style="width:60px" name="totalheightofthebuilding" id="totalheightofthebuilding"
+								   min="1"
+								   max="200">
+							<input type="button" value="Submit" onclick="totalheightofthebuilding()">
+							</>
+						</td>
+					</tr>
+				</table>
+			</div>	
+		</props->	
+<!--The section box is a section view of the project, it share information about all the floor, belove and above ground. The skeleton of the section is designed as a BIM project. 
+	Starting with the project site, and finishing with information about the single element such as different floors and core design-->
+		<section->
+			<project- name="Duplex Apartment">
+				<site- lat="(41, 52, 27, 840000)" long="(-87, -38, -21, -839999)" elev="-0.0">
+					<building->
+						<roof- 
+							class="floor_roof"
+							name='Roof'  
+							level='9' 
+							elev="27.000000000000" >
+							Roof<span 
+							class="floor_stats">
+							27.0</span>
+						</roof->
+						<div id="floor-middle"></div>
+						<!--<div id="floor" name="floor" ><span class="floor_stats">trial</span></div>-->
+						<floor- 
+							class="floor_upper" 
+							name='Level 8'  
+							level='7' 
+							elev="21.100000000000378" >
+							Level 8<span 
+							class="floor_stats">
+							21.1</span> 
+						</floor->
+						<!--<core-></core->
+						</floor->
+						<floor- class="floor_ground" name='Level 1'  level='0' elev="0.0" >Level 1<span class="floor_stats">0.0</span> </floor->
+						<ground-></ground->
+						<core-></core->-->
+						<underground- 
+							class="underground_lower" 
+							name='T/FDN'  
+							level='-1' 
+							elev="-1.25" >
+							T/FDN<span 
+							class="underground_stats">
+							-1.25</span> 
+						</underground->
+					</building->
+				</site->
+			</project->
+		</section->
+<!--The result box has inside a plotly script which is used to share information about the wind load and the maximum deflection allowed by the regulations.-->
+		<result->
+			<myPlot- id="myPlot" name="Wind load simulation" type="text/javascript"></myPlot->
+			
+<!--The idea is to import the check needed from the Eurocode, and analyse if the design is following the requirements -->				
+			<Eurocodecheck- id="Eurocodecheck-" name="Eurocode check" type="text/javascript" ></Eurocodecheck->
+
+<!--The idea is to divide the box with another column where it might be possible to design a LCA of the structure and share important information such as, cost and hours needed + the CO2 emissions-->			
+
+<!--Inside the html script there is also part of my calculation done. I need to understand how to remove it from here and create just a onload function which will have this script inside-->
+
+
+
+					
+<script type="text/javascript">
+
+function totalheightofthebuilding() {
+	var z = document.getElementById("totalheightofthebuilding").value;
+
+
+    qp = [];
+	y = [];
+/* At the moment I am not able to get the information I need to continue the simulation. I am not able to get the value of the total height of the building and insert it inside the for loop.
+ If I will be able to do that, the first step of the analysis will be done, and ideally I might need to repeat the same script in order to get information about the width and the length of the building and the core from the table.*/
+
+
+
+			if (z < 200, z > 0) {
+
+				for (var i = 1; i <= z; i++) {
+					qp.push(i);
+/*z0 depends on the terrain category. There are 5 different terrain category.
+0: Sea or costal area exposed to the open sea. z0=0,003 ; zmin=1
+I: Lakes or flat horizontal area with negligible vegetation and without obstacles. z0=0,01 ; zmin=1
+II: Area with low vegetation such as grass and isolated obstacles
+	(trees, buildings) with separations of at least 20 obstacle height. z0=0,05 ; zmin=2
+III: Area with regular cover of vegetation or buildings or with isolated
+	obstacles with separations of maximum 20 obstacle heights 
+	(such as villages, suburban terrain, permanent forest). z0=0,3 ; zmin=5
+IV: Area in which at least 15 % of the surface is covered with buildings
+	and their average height exceeds 15 m. z0=1,0 ; zmin=10
+*/					
+					// Vb is the basic wind velocity: it is function of Vb,0 Cdir and Cseason
+						// for this script they are the recommended value from the Eurocode
+					Vb = 24; // this value is taken from the NA
+					c0z = 1; // orography factor, this value is taken from the NA
+					z0III = 0.3; // terrain category III
+					kr = 0.19 * (z0III / 0.05) ** 0.07; // terrain factor depending on the roughness length z0
+					crz = kr * Math.log(i / z0III); // roughness factor the value is based on a logarithmic velocity profile
+					//two different formulas it depends on the z as a function of zmin and zmax
+					Vm = crz * Vb * c0z; // mean wind velocity at the height of z					
+					kl = 1; // turbulence factor, taken from the Eurocode 
+					Iv = kl / (c0z * Math.log(i / z0III)); // turbulence intensity at the height of z
+					// peak velocity pressure
+					rho = 1.25; // air density, it depends on the altitude, temperature, and barometric pressure during wind storms
+					qp[i] = ((1 + 7 * Iv) * 0.5 * rho * Vm ** 2) / 1000;
+					y[i] = i;
+					console.log(qp[i])
+					// Hp rectangular plan of tall buildings where 1 < H/d < 5
+// Initial calculation based on project 11080_2022
+					// wind profile acting on longer wall ZONE D
+					Cpe10D = 0.8
+					wd = qp[i] * Cpe10D	// wind pressure acting on the external surfaces
+					console.log(wd)
+					// wind profile acting on longer wall ZONE E
+					Cpe10E = -0.5 + (-0.7 - ( -0.5 ) ) / ( 5 - 1 ) * ( 98.8 / 24.5 )
+					we = qp[i] * Cpe10E	// wind pressure acting on the external surfaces
+					console.log(we)
+					// wind profile acting on shorter wall ZONE A
+					Cpe10A = -1.2
+					wa = qp[i] * Cpe10A	// wind pressure acting on the external surfaces
+					//console.log(wa)
+					// wind profile acting on shorter wall ZONE B
+					Cpe10B = -0.8
+					wb = qp[i] * Cpe10B	// wind pressure acting on the external surfaces
+					//console.log(wb)
+					hp = 0.5	// height of the parapet
+					// hp / 24.5 
+					// wind profile acting on flat roof ZONE F
+					Cpe10F = -1.6
+					wf = qp[i] * Cpe10F	// wind pressure acting on the external surfaces
+					//console.log(wf)
+					// wind profile acting on flat roof ZONE G
+					Cpe10G = -1.1
+					wg = qp[i] * Cpe10G	// wind pressure acting on the external surfaces
+					//console.log(wg)
+					// wind profile acting on flat roof ZONE H
+					Cpe10H = -0.7
+					wh = qp[i] * Cpe10H	// wind pressure acting on the external surfaces
+					//console.log(wh)
+					// wind profile acting on flat roof ZONE I1
+					Cpe10I1 = -0.2
+					wi1 = qp[i] * Cpe10I1	// wind pressure acting on the external surfaces
+					//console.log(wi1)
+					// wind profile acting on flat roof ZONE I2
+					Cpe10I2 = 0.2
+					wi2 = qp[i] * Cpe10I2	// wind pressure acting on the external surfaces
+					//console.log(wi2)
+					// weighted average for wind load acting on longer wall
+					W1 = (wd - we)
+					console.log(W1)
+			}
+		}
+
+var xArray = qp;
+var yArray = y;
+var data = [{
+	x: xArray,
+	y: yArray,
+	type: 'line',
+  
+}];
+
+var layout = {
+	xaxis: {range: [0, 2]}, //title: "peak velocity pressure"},
+	yaxis: {range: [0, 200]}, //title: "Height of the building",
+	//title: "peak velocity vs. Height of the building"
+	  margin: {
+    l: 50,
+    r: 10,
+    b: 60,
+    t: 20,
+    pad: 8
+  },
+};
+
+Plotly.newPlot('myPlot', data, layout);
+}
+</script>	
+
+		</result->
+					
+	</div>	
+	</body>
+</html>
